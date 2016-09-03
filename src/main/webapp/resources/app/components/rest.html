@@ -1,0 +1,108 @@
+<br />
+<ol class="breadcrumb">
+    <li><a href="#system">System</a></li>
+    <li><a href="#system/{{system.id}}/items">Items</a></li>
+    <li><a href="#system/{{system.id}}/items/entity">Entity</a></li>
+    <li><a href="#system/{{system.id}}/items/entity/{{entity.id}}/items">Items</a></li>
+    <li class="active">REST</li>
+</ol>
+<div class="panel panel-default">
+  <div class="panel-heading background_title">REST</div>
+  <div class="panel-body">
+
+    <div class="container-fluid">
+    
+        <div class="alert alert-info" role="alert">System: {{system.name}} <br /> Entity: {{entity.name}}</div>
+
+        <form name="modelForm" novalidate="novalidate">
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group {{modelForm.action.$error.required ? 'has-error' : 'has-success'}} has-feedback">
+                        <label class="control-label" for="action">Action</label>
+                        <select class="form-control" name="action" id="action" data-ng-options="action.name for action in actions | orderBy:'name' track by action.name" data-ng-model="rest.action"></select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group {{modelForm.description.$error.required ? 'has-error' : 'has-success'}} has-feedback">
+                        <label  class="control-label" for="description">Description</label>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Description" ng-model="rest.description" required="required">
+                        <span class="glyphicon {{modelForm.description.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'}} form-control-feedback" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group {{modelForm.method.$error.required ? 'has-error' : 'has-success'}} has-feedback">
+                        <label  class="control-label" for="method">Method</label>
+                        <select class="form-control" name="method" id="method" data-ng-options="method.name for method in methods | orderBy:'name' track by method.name" data-ng-model="rest.method"></select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group {{modelForm.resource.$error.required ? 'has-error' : 'has-success'}} has-feedback">
+                        <label  class="control-label" for="resource">Resource</label>
+                        <input type="text" class="form-control" id="resource" name="resource" placeholder="Resource" ng-model="rest.resource" required="required">
+                        <span class="glyphicon {{modelForm.description.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'}} form-control-feedback" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-6">
+                    <div class="form-group has-success has-feedback">
+                        <label  class="control-label" for="requestJson">Request Json</label>
+                        <select class="form-control" name="requestJson" id="requestJson" data-ng-options="j.name for j in requestJsons | orderBy:'name' track by j.name" data-ng-model="rest.requestJson"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group has-success has-feedback">
+                        <label  class="control-label" for="responseJson">Response Json</label>
+                        <select class="form-control" name="responseJson" id="responseJson" data-ng-options="j.name for j in responseJsons | orderBy:'name' track by j.name" data-ng-model="rest.responseJson"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" data-ng-disabled="modelForm.$invalid" ng-click="add()">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Action</th>
+                        <th>Description</th>
+                        <th>HTTP Method</th>
+                        <th>Resource</th>
+                        <th>Req. JSON</th>
+                        <th>Res. JSON</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr data-ng-if="rests.length === 0">
+                        <td colspan="7">No rests...</td>
+                    </tr>
+                    <tr data-ng-repeat="item in rests">
+                        <td data-ng-bind="item.action"></td>
+                        <td data-ng-bind="item.description"></td>
+                        <td data-ng-bind="item.method"></td>
+                        <td data-ng-bind="item.resource"></td>
+                        <td data-ng-bind="item.requestJson.name"></td>
+                        <td data-ng-bind="item.responseJson.name"></td>
+                        <td>
+                            <span data-toggle="tooltip" data-placement="bottom" title="Delete" >
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#deleteBox" data-ng-click="remove(item.id)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+
+    </div>
+
+  </div>
+</div>

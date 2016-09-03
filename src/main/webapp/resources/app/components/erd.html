@@ -1,0 +1,24 @@
+<br />
+<ol class="breadcrumb">
+    <li><a href="#system">System</a></li>
+    <li><a href="#system/{{system.id}}/items">Items</a></li>
+    <li><a href="#system/{{system.id}}/items/entity">Entity</a></li>
+    <li><a href="#system/{{system.id}}/items/entity/{{entity.id}}/items">Items</a></li>
+    <li class="active">ERD</li>
+</ol>
+<div class="panel panel-default">
+  <div class="panel-heading background_title">ERD</div>
+  <div class="panel-body">
+
+    <div class="container-fluid">
+
+        <div class="alert alert-info" role="alert">System: {{system.name}} <br /> Entity: {{entity.name}}</div>
+
+		<form enctype="multipart/form-data">
+	        <label class="control-label">Select File</label>
+			<input id="input-id" type="file" name="file" class="file">
+		</form>
+    </div>
+
+  </div>
+</div>

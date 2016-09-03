@@ -1,0 +1,81 @@
+<br />
+<ol class="breadcrumb">
+    <li><a href="#system">System</a></li>
+    <li><a href="#system/{{system.id}}/items">Items</a></li>
+    <li><a href="#system/{{system.id}}/items/json">JSON</a></li>
+    <li class="active">JSON Properties</li>
+</ol>
+<div class="panel panel-default">
+  <div class="panel-heading background_title">JSON Properties</div>
+  <div class="panel-body">
+
+    <div class="container-fluid">
+
+        <div class="alert alert-info" role="alert">System: {{system.name}} <br /> Json: {{json.name}}</div>
+
+        <form name="modelForm" novalidate="novalidate">
+
+            <div class="row">
+               <div class="col-md-4">
+                    <div class="form-group {{modelForm.property.$error.required ? 'has-error' : 'has-success'}} has-feedback">
+                        <label  class="control-label" for="property">Property</label>
+                        <input type="text" class="form-control" id="property" name="property" placeholder="Property" data-ng-model="jsonProperty.property" required="required">
+                        <span class="glyphicon {{modelForm.property.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'}} form-control-feedback" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group {{modelForm.type.$error.required ? 'has-error' : 'has-success'}} has-feedback">
+                        <label  class="control-label" for="type">Type</label>
+                        <select class="form-control" name="type" id="type" data-ng-options="type.name for type in types | orderBy:'name' track by type.name" data-ng-model="jsonProperty.type"></select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div data-ng-if="jsonProperty.type.name == 'object'" class="form-group has-success has-feedback">
+                        <label  class="control-label" for="type">Object Json</label>
+                        <select class="form-control" name="relatedJson" id="relatedJson" data-ng-options="j.name for j in relatedJsons | orderBy:'name' track by j.name" data-ng-model="jsonProperty.relatedJson"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" data-ng-disabled="modelForm.$invalid" ng-click="add()">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr data-ng-if="jsonProperties.length === 0">
+                        <td colspan="3">No properties...</td>
+                    </tr>
+                    <tr data-ng-repeat="item in jsonProperties">
+                        <td data-ng-bind="item.property"></td>
+                        <td>
+                        	<span data-ng-bind="item.type"></span>
+                        	<span data-ng-if="item.relatedJson != null">[{{item.relatedJson.name}}]</span>
+                        </td>
+                        <td>
+                            <span data-toggle="tooltip" data-placement="bottom" title="Delete" >
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#deleteBox" data-ng-click="remove(item.id)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+
+    </div>
+
+  </div>
+</div>

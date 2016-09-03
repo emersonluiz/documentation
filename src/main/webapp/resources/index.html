@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- INCLUDES OF CSS -->
+            <link rel="stylesheet" type="text/css" href="resources/assets/css/style.css">
+          	<!-- <link rel="icon" type="image/png" href="assets/imgs/icons/favicon.ico" />-->
+            <link rel="stylesheet" type="text/css" href="resources/assets/libs/font-awesome/css/font-awesome.min.css">
+            
+            <link rel="stylesheet" type="text/css" href="resources/assets/libs/angular-ui/build/angular-ui.min.css">
+            <link rel="stylesheet" type="text/css" href="resources/assets/libs/bootstrap/dist/css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="resources/assets/libs/bootstrap-fileinput-master/css/fileinput.min.css" />
+        <script data-main="resources/app/main.js" src="resources/assets/libs/requirejs/require.js"></script>
+
+        <title>Documentation</title>
+
+    </head>
+    <body>
+
+        <!-- begin general content -->
+        <div class="container-fluid area">
+
+            <!-- begin header -->
+            <div data-ng-include="'resources/structure/header.html'"></div>
+            <!-- end header -->
+
+                <div data-ng-view>Loading...</div>
+
+            <!-- begin footer -->
+            <div data-ng-include="'resources/structure/footer.html'"></div>
+            <!-- end footer -->
+
+        </div>
+        <!-- end general content -->
+
+    </body>
+
+</html>

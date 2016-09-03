@@ -1,0 +1,24 @@
+<br />
+<ol class="breadcrumb">
+    <li><a href="#system">System</a></li>
+    <li><a href="#system/{{system.id}}/items">Items</a></li>
+    <li><a href="#system/{{system.id}}/items/entity">Entity</a></li>
+    <li class="active">Items</li>
+</ol>
+<div class="panel panel-default">
+  <div class="panel-heading background_title">Entity Items</div>
+  <div class="panel-body">
+
+    <div class="container-fluid">
+    
+    	<div class="alert alert-info" role="alert">System: {{system.name}} <br /> Entity: {{entity.name}}</div>
+
+        <div class="list-group">
+        	<a href="#system/{{system.id}}/items/entity/{{entity.id}}/items/erd" class="list-group-item">DER</a>
+            <a href="#system/{{system.id}}/items/entity/{{entity.id}}/items/rest" class="list-group-item">REST</a>
+        </div>
+
+    </div>
+
+  </div>
+</div>
